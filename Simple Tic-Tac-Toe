@@ -1,0 +1,48 @@
+board = [
+    [' ', ' ', ' '],
+    [' ', ' ', ' '],
+    [' ', ' ', ' ']
+]
+
+def grid():
+    print('---------')
+    print(f'| {board[0][0]} {board[0][1]} {board[0][2]} |')
+    print(f'| {board[1][0]} {board[1][1]} {board[1][2]} |')
+    print(f'| {board[2][0]} {board[2][1]} {board[2][2]} |')
+    print('---------')
+grid()
+count = 1
+while True:
+    if (board[0][0] == 'X' and board[0][1] == 'X' and board[0][2] == 'X') or (board[1][0] == 'X' and board[1][1] == 'X' and board[1][2] == 'X') or (board[2][0] == 'X' and board[2][1] == 'X' and board[2][2] == 'X') or (board[0][0] == 'X' and board[1][1] == 'X' and board[2][2] == 'X') or (board[0][2] == 'X' and board[1][1] == 'X' and board[2][0] == 'X') or (board[0][0] == 'X' and board[1][0] == 'X' and board[2][0] == 'X') or (board[0][1] == 'X' and board[1][1] == 'X' and board[2][1] == 'X') or (board[0][2] == 'X' and board[1][2] == 'X' and board[2][2] == 'X'):
+        print('X wins')
+        break
+    elif (board[0][0] == 'O' and board[0][1] == 'O' and board[0][2] == 'O') or (board[1][0] == 'O' and board[1][1] == 'O' and board[1][2] == 'O') or (board[2][0] == 'O' and board[2][1] == 'O' and board[2][2] == 'O') or(board[0][0] == 'O' and board[1][1] == 'O' and board[2][2] == 'O') or(board[0][2] == 'O' and board[1][1] == 'O' and board[2][0] == 'O') or(board[0][0] == 'O' and board[1][0] == 'O' and board[2][0] == 'O') or(board[0][1] == 'O' and board[1][1] == 'O' and board[2][1] == 'O') or (board[0][2] == 'O' and board[1][2] == 'O' and board[2][2] == 'O'):
+        print('O wins')
+        break
+    if (board[0][0] == 'X' or board[0][0] == 'O') and (board[0][1] == 'X' or board[0][1] == 'O') and (board[0][2] == 'X' or board[0][2] == 'O')and (board[1][0] == 'X' or board[1][0] == 'O') and (board[1][1] == 'X' or board[1][1] == 'O') and (board[1][2] == 'X' or board[1][2] == 'O') and (board[2][0] == 'X' or board[2][0] == 'O') and (board[2][1] == 'X' or board[2][1] == 'O') and (board[2][2] == 'X' or board[2][2] == 'O'):
+        print('Draw')
+        break
+    else:
+        coords = input('Enter the coordinates:')
+        n = [_ for _ in coords if _.isalpha()]
+        if len(n) > 0:
+            print('You should enter numbers!')
+        else:
+            x, y = coords.split()
+            x, y = int(x), int(y)
+            if x > 3 or y > 3:
+                print("Coordinates should be from 1 to 3!")
+            else:
+                if board[x - 1][y - 1] == 'X' or board[x - 1][y - 1] == 'O':
+                    print('This cell is occupied! Choose another one!')
+                else:
+                    if count % 2 != 0:
+                        board[x - 1][y - 1] = 'X'
+                        count += 1
+                        grid()
+                        continue
+                    elif count % 2 == 0:
+                        board[x - 1][y - 1] = 'O'
+                        count += 1
+                        grid()
+                        continue
