@@ -1,0 +1,30 @@
+import random
+number = int(input('Enter the number of friends joining (including you):\n'))
+
+def dict_generator(new_list, bill):
+    global friends_dict
+    friends_dict = dict.fromkeys(new_list, round(bill / len(new_list), 2))
+    return friends_dict
+
+if number <= 0:
+    print('No one is joining for the party')
+else:
+    print('Enter the name of every friend (including you), each on a new line:')
+    friends_list = [input() for x in range(number )]
+    bill = int(input('Enter the total bill value:\n'))
+    answer = input('Do you want to use the "Who is lucky?" feature? Write Yes/No:\n')
+    if answer == 'No':
+        print('No one is going to be lucky')
+        dict_generator(friends_list, bill)
+        print(friends_dict)
+    elif answer == 'Yes':
+        dict_generator(friends_list, bill)
+        choice = random.choice(list(friends_dict))
+        print(f'{choice} is the lucky one!')
+        friends_dict[choice] = 0
+        for name in friends_list:
+            if friends_dict[name] != 0:
+                friends_dict[name] = round(bill / (len(friends_list) - 1) , 2)
+        print(friends_dict)
+ 
+ 
