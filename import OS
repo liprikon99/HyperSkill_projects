@@ -1,0 +1,9 @@
+os.getcwd() to learn the current working directory and os.chdir() to change it.
+os.mkdir() to create a single directory and os.makedirs() to create multiple nested folders.
+os.listdir() to get the listing of the directory's content and os.rename() to change the name of files and folders.
+os.access() to check the path for existence and determine what permissions to a directory or a file a certain user or group is granted.
+os.remove() to remove a single file and os.rmdir() to delete a single empty directory.
+
+os.path.join() to construct a new pathname from the given components.
+os.path.split() to split the pathname and os.path.dirname() and os.path.basename() to return a certain part of it.
+os.path.isabs() to find out if the given path is an absolute one and os.path.isdir() and os.path.isfile() to check if it is a directory or a file.
